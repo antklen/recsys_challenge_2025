@@ -1,0 +1,70 @@
+save_name: ai_lab_recsys_score_4_7499
+submit: True
+drop_zeros: True
+
+challenge_data_path: ${oc.env:CHALLENGE_DATA_PATH}
+
+embeddings_list:
+- name: als_64_buy_add_categories
+  scaler:
+    _target_: sklearn.preprocessing.Normalizer
+
+- name: als_64_visits_relevant
+  scaler:
+    _target_: sklearn.preprocessing.Normalizer
+
+- name: next_sku_128_4_4
+  scaler:
+    _target_: sklearn.preprocessing.Normalizer
+
+- name: next_url_192_6_4
+  scaler:
+    _target_: sklearn.preprocessing.Normalizer
+
+- name: stat_features
+  scaler:
+    _target_: sklearn.preprocessing.QuantileTransformer
+    output_distribution: uniform
+
+- name: gru_ae_day_event
+  scaler:
+    _target_: sklearn.preprocessing.Normalizer
+
+- name: gru_ae_sku_text
+  processor:
+    _target_: sklearn.decomposition.PCA
+    n_components: 64
+  scaler:
+    _target_: sklearn.preprocessing.Normalizer
+
+- name: smollm2_all_interactions
+  processor:
+    _target_: sklearn.decomposition.PCA
+    n_components: 128
+  scaler:
+    _target_: sklearn.preprocessing.Normalizer
+
+- name: search_llm
+  processor:
+    _target_: sklearn.decomposition.PCA
+    n_components: 64
+  scaler:
+    _target_: sklearn.preprocessing.Normalizer
+
+- name: gru_ae_event_cat_price_sku_url
+  processor:
+    _target_: sklearn.decomposition.PCA
+    n_components: 64
+  scaler:
+    _target_: sklearn.preprocessing.Normalizer
+
+- name: gru_ae_week_event_cat_price_sku_url
+  processor:
+    _target_: sklearn.decomposition.PCA
+    n_components: 64
+  scaler:
+    _target_: sklearn.preprocessing.Normalizer
+
+imputer:
+  _target_: sklearn.impute.SimpleImputer
+  strategy: mean
