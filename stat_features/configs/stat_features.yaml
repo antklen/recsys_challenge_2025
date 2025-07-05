@@ -1,2 +1,2 @@
-submit: False
+submit: True
 data_path: ${oc.env:CHALLENGE_DATA_PATH}
