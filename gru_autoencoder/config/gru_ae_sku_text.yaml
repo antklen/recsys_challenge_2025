@@ -1,0 +1,31 @@
+submit: True
+name: gru_ae_sku_text
+cuda_visible_devices: 0
+
+clearml_project:
+clearml_task:
+
+data_path_raw: ${oc.env:CHALLENGE_DATA_PATH}/raw
+save_path: ${oc.env:CHALLENGE_DATA_PATH}
+
+dataset:
+  max_length: 66
+
+dataloader:
+  batch_size: 256
+  test_batch_size: 256
+  num_workers: 8
+
+model_params:
+  embedding_dim: 512
+  hidden_size: 512
+  num_layers: 3
+  dropout: 0.1
+
+training_params:
+  lr: 0.001
+
+trainer_params:
+  max_epochs: 10
+  devices: 1
+patience: 3

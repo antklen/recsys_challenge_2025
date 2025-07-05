@@ -1,0 +1,15 @@
+cuda_visible_devices: 0
+submit: True
+
+data_path: ${oc.env:CHALLENGE_DATA_PATH} 
+data_files: search.jsonl
+model_path: 'HuggingFaceTB/SmolLM2-135M'
+tokenizer_path: 'HuggingFaceTB/SmolLM2-135M'
+
+save_dir_name: search_llm
+
+vllm_model_params:
+  gpu_memory_utilization: 0.5
+
+batch_size: 50
+max_length: 8192

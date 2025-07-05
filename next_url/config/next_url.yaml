@@ -1,0 +1,35 @@
+submit: True
+name: next_url_192_6_4
+cuda_visible_devices: 0
+
+data_path_raw: ${oc.env:CHALLENGE_DATA_PATH}/raw
+save_path: ${oc.env:CHALLENGE_DATA_PATH}
+
+data:
+  relevant: True
+  min_count: 10
+
+dataset:
+  user_col: client_id
+  item_col: url
+  max_length: 256
+  num_negatives: 10000
+
+dataloader:
+  batch_size: 32
+  test_batch_size: 32
+  num_workers: 8
+
+model_params:
+  n_embd: 192
+  n_layer: 6
+  n_head: 4
+
+training_params:
+  lr: 0.001
+  predict_top_k: 10
+
+trainer_params:
+  max_epochs: 10
+  devices: 1
+patience: 3

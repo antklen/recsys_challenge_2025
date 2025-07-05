@@ -1,0 +1,41 @@
+submit: True
+name: next_sku_128_4_4
+cuda_visible_devices: 0
+
+data_path_raw: ${oc.env:CHALLENGE_DATA_PATH}/raw
+save_path: ${oc.env:CHALLENGE_DATA_PATH}
+
+dataset:
+  user_col: client_id
+  cat_cols: ['category', 'event']
+  target_cat_cols: ['category', 'event']
+  num_cols: ['price']
+  target_num_cols: ['price']
+  max_length: 64
+  min_length: 32
+
+dataloader:
+  batch_size: 512
+  test_batch_size: 512
+  num_workers: 8
+
+embedding_size:
+  category: 96
+  event: 31
+
+model_params:
+  n_layer: 4
+  n_head: 4
+
+training_params:
+  lr: 0.001
+  loss_coefs:
+    category: 1
+    event: 1
+    price: 1
+  predict_top_k: 10
+
+trainer_params:
+  max_epochs: 10
+  devices: 1
+patience: 3

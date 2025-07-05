@@ -1,0 +1,6 @@
+challenge_data_path: ${oc.env:CHALLENGE_DATA_PATH}
+save_filename: all_interactions_64.parquet
+
+submit: True
+
+max_length: 64

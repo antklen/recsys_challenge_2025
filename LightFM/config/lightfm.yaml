@@ -1,0 +1,10 @@
+submit: True
+
+data_path: ${oc.env:CHALLENGE_DATA_PATH} 
+save_dir_name: lightfm
+
+model_params:
+  loss: warp
+  no_components: 64
+  epoch: 30
+  num_threads: 8

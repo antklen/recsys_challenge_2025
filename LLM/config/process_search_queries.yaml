@@ -1,0 +1,4 @@
+submit: True
+data_path: ${oc.env:CHALLENGE_DATA_PATH} 
+save_file_name: search.jsonl 
+max_length: 90
