@@ -1,0 +1,9 @@
+submit: True
+name: als_64_visits_relevant
+cuda_visible_devices: 0
+
+data_path_raw: ${oc.env:CHALLENGE_DATA_PATH}/raw
+save_path: ${oc.env:CHALLENGE_DATA_PATH}
+
+als_factors: 64
+item_col: url
